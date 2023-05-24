@@ -122,6 +122,7 @@ class SnakeGame: JPanel(), ActionListener {
             move()
         }
 
+        board.moveMade = false
         repaint()
     }
 
@@ -129,28 +130,32 @@ class SnakeGame: JPanel(), ActionListener {
         override fun keyPressed(e: KeyEvent?) {
             val key = e!!.keyCode
 
-            if ((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) && !snake.right) {
+            if ((key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A) && !snake.right && !board.moveMade) {
                 snake.left = true
                 snake.up = false
                 snake.down = false
+                board.moveMade = true
             }
 
-            if ((key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) && !snake.left) {
+            if ((key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D) && !snake.left && !board.moveMade) {
                 snake.right = true
                 snake.up = false
                 snake.down = false
+                board.moveMade = true
             }
 
-            if ((key == KeyEvent.VK_UP || key == KeyEvent.VK_W) && !snake.down) {
+            if ((key == KeyEvent.VK_UP || key == KeyEvent.VK_W) && !snake.down && !board.moveMade) {
                 snake.up = true
                 snake.right = false
                 snake.left = false
+                board.moveMade = true
             }
 
-            if ((key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) && !snake.up) {
+            if ((key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S) && !snake.up && !board.moveMade) {
                 snake.down = true
                 snake.right = false
                 snake.left = false
+                board.moveMade = true
             }
         }
     }
